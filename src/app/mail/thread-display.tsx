@@ -6,6 +6,7 @@ import { Archive, ArchiveX, Clock, MoreVertical, Trash2 } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import EmailDisplay from "./email-display";
+import ReplyBox from "./reply-box";
 
 export default function ThreadDisplay() {
 
@@ -20,24 +21,24 @@ const thread = [
         body: "Hope you are good, feeling well and go to abroad in vication to Germany for 2 weeks come to Jan",
         sysLabel: [ "unread", "inbox"]
     },
-    {
-        id: 2,
-        email: "Hamza@gmail.com",
-        name: "Hamza",
-        ago: "3 hours ago",
-        subject: "issue",
-        body: "Hope you are good",
-        sysLabel: [ "unread", "inbox"]
-    },
-    {
-        id: 3,
-        email: "Ammar@gmail.com",
-        name: "Ammar",
-        ago: "4 hours ago",
-        subject: "resolve",
-        body: "Hope you are good",
-        sysLabel: [ "unread", "inbox"]
-    },
+    // {
+    //     id: 2,
+    //     email: "Hamza@gmail.com",
+    //     name: "Hamza",
+    //     ago: "3 hours ago",
+    //     subject: "issue",
+    //     body: "Hope you are good",
+    //     sysLabel: [ "unread", "inbox"]
+    // },
+    // {
+    //     id: 3,
+    //     email: "Ammar@gmail.com",
+    //     name: "Ammar",
+    //     ago: "4 hours ago",
+    //     subject: "resolve",
+    //     body: "Hope you are good",
+    //     sysLabel: [ "unread", "inbox"]
+    // },
 ]
 
 return (
@@ -54,7 +55,7 @@ return (
             <Button className="ml-2" variant={'ghost'} size='icon'> <Clock className="size-4" /> </Button>
             <div className="flex items-center ml-auto">
                 <DropdownMenu>
-                    <DropdownMenuTrigger>
+                    <DropdownMenuTrigger asChild>
                         <Button className="ml-2" variant={'ghost'} size='icon'> <MoreVertical className="size-4" /> </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
@@ -69,28 +70,30 @@ return (
         <Separator />
     {
         thread ? (
-            <div className="flex flex-col h-full">
-            {/* Header */}
-            <div className="flex items-center p-4 shrink-0">
-                <div className="flex items-center gap-4 text-sm">
-                <Avatar>
-                    <AvatarImage alt="avatar" />
-                    <AvatarFallback>
-                    {thread[0]?.name?.split(" ").map(w => w.charAt(0)).join("").toUpperCase()}
-                    </AvatarFallback>
+        <div className="flex flex-col h-full">
+           <div className="flex items-start justify-between gap-4 p-4 border-b">
+            <div className="flex items-start gap-4 min-w-0">
+                <Avatar className="h-10 w-10 shrink-0">
+                <AvatarImage alt="avatar" />
+                <AvatarFallback className="font-semibold">
+                    {thread[0]?.name
+                    ?.split(" ")
+                    .map(w => w.charAt(0))
+                    .join("")
+                    .toUpperCase()}
+                </AvatarFallback>
                 </Avatar>
 
-                <div className="grid gap-1">
-                    <div className="font-semibold">{thread[0].name}</div>
-                        <div className="text-xs line-clamp-1">{thread[0].subject}</div>
-                        <div className="text-xs line-clamp-1">
-                        <span className="font-medium">Reply-To:</span> {thread[0].email}
-                    </div>
+                <div className="flex flex-col gap-1 min-w-0">
+                    <div className="font-semibold leading-tight truncate"> {thread[0].name} </div>
+                    <div className="text-sm text-muted-foreground truncate"> {thread[0].subject} </div>
+                    <div className="text-xs text-muted-foreground truncate"> <span className="font-medium text-foreground">Reply-To:</span>{" "} {thread[0].email} </div>
                 </div>
-
                 </div>
-                {thread[0].senAt && ( <div className="ml-auto text-xs text-muted-foreground"> {thread[0].senAt} </div> )}
-            </div>
+                    {thread[0].senAt && (
+                        <div className="text-xs text-muted-foreground whitespace-nowrap pt-1"> {thread[0].senAt} </div>
+                    )}
+                </div>
 
             <Separator />
 
@@ -106,9 +109,7 @@ return (
             <Separator />
 
             {/* Reply box */}
-            <div className="shrink-0 p-4">
-                Reply box
-            </div>
+            <div className="shrink-0 p-4"> <ReplyBox /> </div>
 
             </div>
         ) : (

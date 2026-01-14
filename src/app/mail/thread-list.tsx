@@ -1,6 +1,6 @@
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import React, { Fragment, useState } from 'react'
+import { Fragment, useState } from 'react'
 const data = [
     {
         data: "2024-10-25",
@@ -44,22 +44,18 @@ const thread = [
 ]
 
 export default function Threadlist() {
-    const [threadId, setThreadId] = useState(0);
+const [threadId, setThreadId] = useState(0);
   return (
-    <div className='max-w-full overflow-y-scroll max-h-[cal(100vh-120px)]'>
+    <div className='max-w-full max-h-[calc(100vh-120px)] overflow-y-auto'>
         <div className='flex flex-col gap-2 p-4 pt-0'>
             {data.map((val, ind) => {
                 return <Fragment key={ind}>
-                    <div className='text-xs font-medium text-muted-foreground mt-5 first:mt-0'>
-                        {val.data}
-                    </div>
+                    <div className='text-xs font-medium text-muted-foreground mt-5 first:mt-0'> {val.data} </div>
                     {thread.map((val, ind) => {
                         return <button onClick={() => setThreadId(val.id)} key={ind} className={cn('flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all relative', {'bg-accent' : val.id === threadId})}>
                             <div className='flex flex-col w-full gap-2'>
                                 <div className='flex items-center'>
-                                    <div className='flex items-center gap-2'>
-                                        <div className='font-semibold'> {val.name} </div>
-                                    </div>
+                                    <div className='flex items-center gap-2'> <div className='font-semibold'> {val.name} </div> </div>
                                     <div className={cn('ml-auto text-xs')}> {val.ago} </div>
                                 </div>
                                 <div className='text-xs font-medium'> {val.subject} </div>

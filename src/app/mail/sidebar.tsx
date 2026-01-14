@@ -7,7 +7,7 @@ type Prop = {
 }
 
 export default function Sidebar({ isCollapsed } : Prop) {
-    const [tab] = useLocalStorage("normalhuman-tab", "inbox")
+    const [tab] = useLocalStorage("tab", "inbox")
 
   return (
     <Nav 

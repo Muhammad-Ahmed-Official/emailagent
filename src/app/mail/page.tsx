@@ -1,8 +1,6 @@
 import ThemeToggle from '@/components/theme-toggle'
 import Mail from './mail'
 
-//  defaultLayout={[20, 32, 48]}
-
 export default function MailDashboard() {
   return (
     <>
@@ -13,3 +11,5 @@ export default function MailDashboard() {
     </>
   )
 }
+
+//  defaultLayout={[20, 32, 48]}

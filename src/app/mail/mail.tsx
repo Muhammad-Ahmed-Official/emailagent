@@ -68,7 +68,7 @@ export default function Mail({ navCollapsedSize = 5 }) {
         <ResizeHandle onResize={handleListResize} />
 
         {/* Thread View */}
-        <div className="flex-1 p-4">
+        <div className="flex-1 py-4">
           <ThreadDisplay />
         </div>
 

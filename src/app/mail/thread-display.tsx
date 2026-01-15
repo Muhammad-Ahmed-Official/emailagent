@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator";
 import { Archive, ArchiveX, Clock, MoreVertical, Trash2 } from "lucide-react";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import EmailDisplay from "./email-display";
 import ReplyBox from "./reply-box";
@@ -106,11 +106,9 @@ return (
                 </div>
             </div>
 
+            <div className="flex-1"> </div>
             <Separator />
-
-            {/* Reply box */}
-            <div className="shrink-0 p-4"> <ReplyBox /> </div>
-
+            <ReplyBox />
             </div>
         ) : (
             <div className="p-8 text-center text-muted-foreground">

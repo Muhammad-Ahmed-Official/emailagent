@@ -42,7 +42,7 @@ export default function Mail({ navCollapsedSize = 5 }) {
             </div>
             <Separator />
             <Sidebar isCollapsed={isCollapsed} />
-            <div className="mt-auto p-2">Ask AI</div>
+            <div className="mt-auto p-2"></div>
           </div>
         </div>
 

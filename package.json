@@ -38,7 +38,8 @@
     "react-select": "^5.10.2",
     "tailwind-merge": "^3.4.0",
     "turndown": "^7.2.2",
-    "usehooks-ts": "^3.1.1"
+    "usehooks-ts": "^3.1.1",
+    "vaul": "^1.1.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
